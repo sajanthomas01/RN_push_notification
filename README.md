@@ -9,6 +9,7 @@
    https://firebase.google.com/docs/cloud-messaging/send-message
    
 ## Dummy json data
+### send from server to fcm endpoint
    
    {
     "to": "device_token_retuned_by_firebase_here",
