@@ -26,3 +26,36 @@
       }
     }
   }
+  
+  ## Notification Listener( data send to the endpoint is shown using this as a local notification)
+  
+    this.notificationListener = FCM.on(FCMEvent.Notification, async (notif) => {
+            // optional, do some component related stuff
+            console.log('what i got from server in listener ',notif.custom_notification);
+
+            try{
+              console.log('inside locals')
+              var data = JSON.parse(notif.custom_notification);
+              FCM.presentLocalNotification({
+                vibrate: 500,
+                title: data.title,
+                body: data.body,
+                color: data.color,
+                sub_text:data.sub_text,
+                picture: data.picture,
+                big_text: data.big_text,
+                priority: data.priority,
+                
+                large_icon: data.icon,
+                show_in_foreground: data.forground,
+               
+                
+              });
+      
+
+            }catch(e){
+              console.log(e)
+            }
+           // console.log(JSON.parse(notif.custom_notification));
+            Alert.alert('hi')
+        });
